@@ -5,12 +5,32 @@ class Program
 {
   static void Main()
   {
-    Console.WriteLine("Enter time:");
-    Console.WriteLine("hour:");
+    Console.Write("{0,15:N5}","Enter time to get the degreess of the clock face : ");
+    Console.WriteLine();
+
+    Console.Write("{0,15:N5}","hour: ");
     int hour = int.Parse(Console.ReadLine());
-    Console.WriteLine("minutes:");
+
+    if(hour > 12)
+    {
+      Console.WriteLine("Hour must be less then 12");
+      Console.Write("{0,15:N5}","hour: ");
+      hour = int.Parse(Console.ReadLine());
+    }
+
+    Console.Write("{0,15:N5}","minutes: ");
     int minutes = int.Parse(Console.ReadLine());
-    Console.WriteLine(GetAngle(hour, minutes));
+    if(minutes > 60)
+    {
+      Console.WriteLine("Minutes must be less than 60");
+      Console.Write("{0,15:N5}","minutes: ");
+      minutes = int.Parse(Console.ReadLine());
+    }
+    Console.WriteLine();
+
+    Console.WriteLine("--------------------------------------------");
+    Console.WriteLine("{0,15:N5}", GetAngle(hour, minutes) + " Degrees");
+    Console.WriteLine("--------------------------------------------");
   }
 
   static int GetAngle(int hour, int minutes)
@@ -22,7 +42,7 @@ class Program
     int result;
     if (angle > 180)
     {
-     return result = 360 - angle;
+     return result = (360 - angle);
     }
     else
     {
